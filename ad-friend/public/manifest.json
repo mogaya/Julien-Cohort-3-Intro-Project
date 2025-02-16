@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "AdFriend",
+    "version": "1.0",
+    "description": "Replaces ads with motivational quotes",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://zenquotes.io/api/random"
+    ],
+    "background": {
+        "service_worker": "/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_icon": {
+            "48": "icon48.png"
+        }
+    }
+}
