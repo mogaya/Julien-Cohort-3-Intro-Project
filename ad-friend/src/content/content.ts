@@ -1,17 +1,21 @@
 const adSelectors = [
-  "iframe",
-  ".adsbygoogle",
-  "[id^=google_ads]",
+  "iframe", // Ads embedded in iframes
+  ".adsbygoogle", // Google AdSense ads
+  "[id^=google_ads]", // Elements with IDs that start with "google_ads"
+
+  // Generic ad classes
   ".ad-banner",
   ".ad-container",
   ".sponsored",
 ];
 
 async function replaceAds() {
+  // Finds all ads on the page
   document.querySelectorAll(adSelectors.join(", ")).forEach((ad) => {
     const widget = document.createElement("div");
     widget.className = "adfriend-widget p-3 border rounded bg-light text-dark";
 
+    // Fetches a quote and inserts it into the widget
     fetchQuote(widget);
 
     ad.replaceWith(widget);
